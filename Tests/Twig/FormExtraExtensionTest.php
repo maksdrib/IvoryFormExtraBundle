@@ -16,6 +16,7 @@ use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Form\TwigRenderer;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
 use Symfony\Component\Form\Forms;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * Ivory Form Extra Twig extension test.
@@ -68,8 +69,8 @@ class FormExtraExtensionTest extends \PHPUnit_Framework_TestCase
     public function testDefaultJavascriptFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('text', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('text', $this->getFormType('text'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -81,8 +82,8 @@ class FormExtraExtensionTest extends \PHPUnit_Framework_TestCase
     public function testCustomJavascriptFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('text', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('text', $this->getFormType('text'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -99,8 +100,8 @@ class FormExtraExtensionTest extends \PHPUnit_Framework_TestCase
     public function testInheritanceJavascriptFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('textarea', 'Symfony\Component\Form\Extension\Core\Type\TextareaType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('textarea', $this->getFormType('textarea'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -117,8 +118,8 @@ class FormExtraExtensionTest extends \PHPUnit_Framework_TestCase
     public function testDefaultStylesheetFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('text', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('text', $this->getFormType('text'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -130,8 +131,8 @@ class FormExtraExtensionTest extends \PHPUnit_Framework_TestCase
     public function testCustomStylesheetFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('text', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('text', $this->getFormType('text'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -148,8 +149,8 @@ class FormExtraExtensionTest extends \PHPUnit_Framework_TestCase
     public function testInheritanceStylesheetFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('textarea', 'Symfony\Component\Form\Extension\Core\Type\TextareaType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('textarea', $this->getFormType('textarea'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -161,5 +162,19 @@ class FormExtraExtensionTest extends \PHPUnit_Framework_TestCase
         $expected .= '<style type="text/css">button-stylesheet</style>';
 
         $this->assertSame($expected, $template->render(array('form' => $form)));
+    }
+
+    /**
+     * Gets the form type according to the Symfony version.
+     *
+     * @param string $type The form type.
+     *
+     * @return string The form type.
+     */
+    private function getFormType($type)
+    {
+        return Kernel::VERSION_ID >= 20800
+            ? 'Symfony\Component\Form\Extension\Core\Type\\'.ucfirst($type).'Type'
+            : $type;
     }
 }

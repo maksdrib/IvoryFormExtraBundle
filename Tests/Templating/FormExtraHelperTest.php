@@ -15,6 +15,7 @@ use Ivory\FormExtraBundle\Templating\FormExtraHelper;
 use Symfony\Component\Form\Extension\Templating\TemplatingRendererEngine;
 use Symfony\Component\Form\FormRenderer;
 use Symfony\Component\Form\Forms;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Templating\Loader\FilesystemLoader;
 use Symfony\Component\Templating\PhpEngine;
 use Symfony\Component\Templating\TemplateNameParser as TemplatingNameParser;
@@ -47,7 +48,7 @@ class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
 
         $this->formFactory = Forms::createFormFactory();
         $this->formRenderer = new FormRenderer(new TemplatingRendererEngine($this->phpEngine, array('')));
-        $this->phpEngine->addHelpers(['ivory_form_extra' => new FormExtraHelper($this->formRenderer)]);
+        $this->phpEngine->addHelpers(array('ivory_form_extra' => new FormExtraHelper($this->formRenderer)));
     }
 
     /**
@@ -63,8 +64,8 @@ class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
     public function testDefaultJavascriptFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('text', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('text', $this->getFormType('text'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -74,8 +75,8 @@ class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
     public function testCustomJavascriptFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('text', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('text', $this->getFormType('text'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -93,8 +94,8 @@ class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
     public function testInheritanceJavascriptFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('textarea', 'Symfony\Component\Form\Extension\Core\Type\TextareaType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('textarea', $this->getFormType('textarea'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -112,8 +113,8 @@ class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
     public function testDefaultStylesheetFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('text', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('text', $this->getFormType('text'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -123,8 +124,8 @@ class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
     public function testCustomStylesheetFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('text', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('text', $this->getFormType('text'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -142,8 +143,8 @@ class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
     public function testInheritanceStylesheetFragment()
     {
         $form = $this->formFactory->createBuilder()
-            ->add('textarea', 'Symfony\Component\Form\Extension\Core\Type\TextareaType')
-            ->add('submit', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+            ->add('textarea', $this->getFormType('textarea'))
+            ->add('submit', $this->getFormType('submit'))
             ->getForm()
             ->createView();
 
@@ -156,6 +157,20 @@ class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
             $expected,
             $this->normalize($this->phpEngine->render('stylesheet.html.php', array('form' => $form)))
         );
+    }
+
+    /**
+     * Gets the form type according to the Symfony version.
+     *
+     * @param string $type The form type.
+     *
+     * @return string The form type.
+     */
+    private function getFormType($type)
+    {
+        return Kernel::VERSION_ID >= 20800
+            ? 'Symfony\Component\Form\Extension\Core\Type\\'.ucfirst($type).'Type'
+            : $type;
     }
 
     /**
