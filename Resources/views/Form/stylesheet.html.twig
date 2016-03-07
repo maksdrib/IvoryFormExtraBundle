@@ -1,0 +1,7 @@
+{%- block form_stylesheet -%}
+    {% for child in form -%}
+        {{- form_stylesheet(child) -}}
+    {%- endfor %}
+{% endblock %}
+
+{% block button_stylesheet %}{% endblock %}

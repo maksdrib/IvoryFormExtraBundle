@@ -1,0 +1,34 @@
+{
+    "name": "egeloen/form-extra-bundle",
+    "type": "symfony-bundle",
+    "description": "Provides a JavaScript/StyleSheet fragment for the Symfony Form component.",
+    "keywords": [ "form", "javascript", "stylesheet" ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eric GELOEN",
+            "email": "geloen.eric@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/form": "~2.2|~3.0",
+        "symfony/framework-bundle": "~2.2|~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "symfony/phpunit-bridge": "~2.7|~3.0",
+        "symfony/twig-bridge": "~2.2|3.0"
+    },
+    "suggest": {
+        "symfony/twig-bridge": "Allows to use Twig templates"
+    },
+    "autoload": {
+        "psr-4": { "Ivory\\FormExtraBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
