@@ -4,7 +4,11 @@ Be aware the bundle heavily relies on the form theming, so please read the
 [related documentation](http://symfony.com/doc/current/cookbook/form/form_customization.html) 
 before stating.
 
-In order to explain you how it works, we will configure all datetime form types to be converted to
+Basically, the javascript and stylesheet fragments work the same way others form fragments such as 
+widget, label or error. That means when you render a javascript/stylesheet fragment the bundle will 
+search and render the block according to the form type hierarchy.
+
+In order to explain you how it works, we will configure the datetime form type to be converted to
 a datetime picker.
 
 ## JavaScript Fragment
@@ -22,7 +26,7 @@ To attach javascript to a form type, you need to create a new datetime javascrip
 {% endblock %}
 ```
 
-Here, we rely on `app/Resources/Form/javascripts.html.twig` but be aware you wan put your template 
+Here, we rely on `app/Resources/Form/javascripts.html.twig` but be aware you can put your template 
 where you want in your application. 
 
 After, you need to register this new template as form theming:
@@ -38,12 +42,13 @@ twig:
 Then, just need to render your form javascript at the bottom of the page:
 
 ``` twig
+{# Load the datetime picker javascript library #}
 {{ form_javascript(form) }}
 ```
 
 ## StyleSheet Fragment
 
-The stylehseet fragment works the same way the javascript one. So, first, create a new datetime 
+The stylesheet fragment works the same way the javascript one. So, first, create a new datetime 
 stylesheet fragment:
 
 ``` twig
