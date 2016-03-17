@@ -18,7 +18,8 @@
     "require-dev": {
         "phpunit/phpunit": "~4.0",
         "symfony/phpunit-bridge": "~2.7|~3.0",
-        "symfony/twig-bridge": "~2.2|3.0"
+        "symfony/twig-bridge": "~2.2|3.0",
+        "twig/twig": "~1.18"
     },
     "suggest": {
         "symfony/twig-bridge": "Allows to use Twig templates"
