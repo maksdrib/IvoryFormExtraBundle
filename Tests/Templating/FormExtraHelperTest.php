@@ -168,7 +168,7 @@ class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
      */
     private function getFormType($type)
     {
-        return Kernel::VERSION_ID >= 20800
+        return method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
             ? 'Symfony\Component\Form\Extension\Core\Type\\'.ucfirst($type).'Type'
             : $type;
     }
