@@ -12,6 +12,7 @@
 namespace Ivory\FormExtraBundle\Tests\DependencyInjection;
 
 use Ivory\FormExtraBundle\DependencyInjection\IvoryFormExtraExtension;
+use Ivory\FormExtraBundle\Tests\AbstractTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -19,7 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class IvoryFormExtraExtensionTest extends \PHPUnit_Framework_TestCase
+class IvoryFormExtraExtensionTest extends AbstractTestCase
 {
     /** @var \Symfony\Component\DependencyInjection\ContainerBuilder */
     private $container;
@@ -32,7 +33,7 @@ class IvoryFormExtraExtensionTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->formRendererMock = $this->getMock('Symfony\Component\Form\FormRendererInterface');
+        $this->formRendererMock = $this->createMock('Symfony\Component\Form\FormRendererInterface');
 
         $this->container = new ContainerBuilder();
         $this->container->set('templating.form.renderer', $this->formRendererMock);

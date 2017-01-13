@@ -12,10 +12,10 @@
 namespace Ivory\FormExtraBundle\Tests\Templating;
 
 use Ivory\FormExtraBundle\Templating\FormExtraHelper;
+use Ivory\FormExtraBundle\Tests\AbstractTestCase;
 use Symfony\Component\Form\Extension\Templating\TemplatingRendererEngine;
 use Symfony\Component\Form\FormRenderer;
 use Symfony\Component\Form\Forms;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Templating\Loader\FilesystemLoader;
 use Symfony\Component\Templating\PhpEngine;
 use Symfony\Component\Templating\TemplateNameParser as TemplatingNameParser;
@@ -25,7 +25,7 @@ use Symfony\Component\Templating\TemplateNameParser as TemplatingNameParser;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class FormExtraHelperTest extends \PHPUnit_Framework_TestCase
+class FormExtraHelperTest extends AbstractTestCase
 {
     /** @var \Symfony\Component\Templating\PhpEngine */
     private $phpEngine;

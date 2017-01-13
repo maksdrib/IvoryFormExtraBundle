@@ -11,19 +11,19 @@
 
 namespace Ivory\FormExtraBundle\Tests\Twig;
 
+use Ivory\FormExtraBundle\Tests\AbstractTestCase;
 use Ivory\FormExtraBundle\Twig\FormExtraExtension;
 use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Form\TwigRenderer;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
 use Symfony\Component\Form\Forms;
-use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * Ivory Form Extra Twig extension test.
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class FormExtraExtensionTest extends \PHPUnit_Framework_TestCase
+class FormExtraExtensionTest extends AbstractTestCase
 {
     /** @var \Twig_Environment */
     private $twig;
@@ -39,21 +39,28 @@ class FormExtraExtensionTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->formFactory = Forms::createFormFactory();
-        $this->formRenderer = new TwigRenderer(new TwigRendererEngine(array(
-            'javascript.html.twig',
-            'stylesheet.html.twig',
-        )));
-
         $this->twig = new \Twig_Environment(new \Twig_Loader_Filesystem(array(
             __DIR__.'/../../Resources/views/Form',
             __DIR__.'/../Fixtures/views/Twig',
         )));
 
-        $this->twig->addExtension($formExtension = new FormExtension($this->formRenderer));
-        $this->twig->addExtension(new FormExtraExtension($this->formRenderer));
+        $this->twig->addExtension(new FormExtension());
+        $this->twig->addExtension(new FormExtraExtension());
 
-        $formExtension->initRuntime($this->twig);
+        $this->formFactory = Forms::createFormFactory();
+        $this->formRenderer = new TwigRenderer(new TwigRendererEngine(
+            array('javascript.html.twig', 'stylesheet.html.twig'),
+            $this->twig
+        ));
+
+        $loader = $this->createMock('Twig_RuntimeLoaderInterface');
+        $loader
+            ->expects($this->once())
+            ->method('load')
+            ->with($this->identicalTo('Symfony\Bridge\Twig\Form\TwigRenderer'))
+            ->will($this->returnValue($this->formRenderer));
+
+        $this->twig->addRuntimeLoader($loader);
     }
 
     /**

@@ -12,13 +12,14 @@
 namespace Ivory\FormExtraBundle\Tests\DependencyInjection\Compiler;
 
 use Ivory\FormExtraBundle\DependencyInjection\Compiler\TemplatingCompilerPass;
+use Ivory\FormExtraBundle\Tests\AbstractTestCase;
 
 /**
  * Templating compiler pass test.
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class TemplatingCompilerPassTest extends \PHPUnit_Framework_TestCase
+class TemplatingCompilerPassTest extends AbstractTestCase
 {
     /** @var \Ivory\FormExtraBundle\DependencyInjection\Compiler\TemplatingCompilerPass */
     private $compilerPass;

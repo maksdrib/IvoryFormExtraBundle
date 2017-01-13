@@ -18,7 +18,7 @@ use Ivory\FormExtraBundle\IvoryFormExtraBundle;
  *
  * @author GeLo <geloen.eric@gmail.com>
  */
-class IvoryFormExtraBundleTest extends \PHPUnit_Framework_TestCase
+class IvoryFormExtraBundleTest extends AbstractTestCase
 {
     /** @var \Ivory\FormExtraBundle\IvoryFormExtraBundle */
     private $bundle;
