@@ -44,23 +44,28 @@ class FormExtraExtensionTest extends AbstractTestCase
             __DIR__.'/../Fixtures/views/Twig',
         )));
 
-        $this->twig->addExtension(new FormExtension());
-        $this->twig->addExtension(new FormExtraExtension());
-
         $this->formFactory = Forms::createFormFactory();
         $this->formRenderer = new TwigRenderer(new TwigRendererEngine(
             array('javascript.html.twig', 'stylesheet.html.twig'),
             $this->twig
         ));
 
-        $loader = $this->createMock('Twig_RuntimeLoaderInterface');
-        $loader
-            ->expects($this->once())
-            ->method('load')
-            ->with($this->identicalTo('Symfony\Bridge\Twig\Form\TwigRenderer'))
-            ->will($this->returnValue($this->formRenderer));
+        $this->twig->addExtension(new FormExtraExtension());
 
-        $this->twig->addRuntimeLoader($loader);
+        if (!method_exists('Symfony\Bridge\Twig\Extension\FormExtension', '__get')) {
+            $this->twig->addExtension(new FormExtension($this->formRenderer));
+        } else {
+            $this->twig->addExtension(new FormExtension());
+
+            $loader = $this->createMock('Twig_RuntimeLoaderInterface');
+            $loader
+                ->expects($this->once())
+                ->method('load')
+                ->with($this->identicalTo('Symfony\Bridge\Twig\Form\TwigRenderer'))
+                ->will($this->returnValue($this->formRenderer));
+
+            $this->twig->addRuntimeLoader($loader);
+        }
     }
 
     /**
