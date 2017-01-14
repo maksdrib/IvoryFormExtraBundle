@@ -2,6 +2,7 @@
 
 ### 1.0.1 (????-??-??)
 
+ * 2c34dce - [Test] Fix twig deprecation for Symfony 3.0.*
  * 5a2dba3 - [Git] Add .scrutinizer.yml and .travis.yml to .gitattributes
  * 44d3226 - [Travis] Improve build
  * ff72410 - [Travis] Fix tests
