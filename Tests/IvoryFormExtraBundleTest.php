@@ -12,15 +12,16 @@
 namespace Ivory\FormExtraBundle\Tests;
 
 use Ivory\FormExtraBundle\IvoryFormExtraBundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Ivory Form Extra bundle test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class IvoryFormExtraBundleTest extends AbstractTestCase
 {
-    /** @var \Ivory\FormExtraBundle\IvoryFormExtraBundle */
+    /**
+     * @var IvoryFormExtraBundle
+     */
     private $bundle;
 
     /**
@@ -29,14 +30,6 @@ class IvoryFormExtraBundleTest extends AbstractTestCase
     protected function setUp()
     {
         $this->bundle = new IvoryFormExtraBundle();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->bundle);
     }
 
     public function testBundle()
@@ -63,7 +56,7 @@ class IvoryFormExtraBundleTest extends AbstractTestCase
     }
 
     /**
-     * @return \Symfony\Component\DependencyInjection\ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
      */
     private function createContainerBuilderMock()
     {

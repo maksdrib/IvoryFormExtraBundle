@@ -12,8 +12,6 @@
 namespace Ivory\FormExtraBundle\Twig;
 
 /**
- * Form Extra Twig extension.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class FormExtraExtension extends \Twig_Extension

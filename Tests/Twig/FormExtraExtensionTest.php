@@ -16,22 +16,27 @@ use Ivory\FormExtraBundle\Twig\FormExtraExtension;
 use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Form\TwigRenderer;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Forms;
 
 /**
- * Ivory Form Extra Twig extension test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class FormExtraExtensionTest extends AbstractTestCase
 {
-    /** @var \Twig_Environment */
+    /**
+     * @var \Twig_Environment
+     */
     private $twig;
 
-    /** @var \Symfony\Component\Form\FormFactoryInterface */
+    /**
+     * @var FormFactoryInterface
+     */
     private $formFactory;
 
-    /** @var \Symfony\Bridge\Twig\Form\TwigRenderer */
+    /**
+     * @var TwigRenderer
+     */
     private $formRenderer;
 
     /**
@@ -66,16 +71,6 @@ class FormExtraExtensionTest extends AbstractTestCase
 
             $this->twig->addRuntimeLoader($loader);
         }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->formRenderer);
-        unset($this->formFactory);
-        unset($this->twig);
     }
 
     public function testDefaultJavascriptFragment()
@@ -177,11 +172,9 @@ class FormExtraExtensionTest extends AbstractTestCase
     }
 
     /**
-     * Gets the form type according to the Symfony version.
+     * @param string $type
      *
-     * @param string $type The form type.
-     *
-     * @return string The form type.
+     * @return string
      */
     private function getFormType($type)
     {

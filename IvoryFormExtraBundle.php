@@ -13,8 +13,8 @@ namespace Ivory\FormExtraBundle;
 
 use Ivory\FormExtraBundle\DependencyInjection\Compiler\ResourceCompilerPass;
 use Ivory\FormExtraBundle\DependencyInjection\Compiler\TemplatingCompilerPass;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Ivory Form Javascript bundle.

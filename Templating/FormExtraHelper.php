@@ -16,19 +16,17 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Templating\Helper\Helper;
 
 /**
- * Form Extra helper.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class FormExtraHelper extends Helper
 {
-    /** @var \Symfony\Component\Form\FormRendererInterface */
+    /**
+     * @var FormRendererInterface
+     */
     private $renderer;
 
     /**
-     * Creates a Form Javascript helper.
-     *
-     * @param \Symfony\Component\Form\FormRendererInterface $renderer The form renderer.
+     * @param FormRendererInterface $renderer
      */
     public function __construct(FormRendererInterface $renderer)
     {
@@ -36,12 +34,10 @@ class FormExtraHelper extends Helper
     }
 
     /**
-     * Renders a form javascript fragment.
+     * @param FormView $view
+     * @param array    $variables
      *
-     * @param FormView $view      The form view.
-     * @param array    $variables The extra variables
-     *
-     * @return string The rendered form javascript fragment.
+     * @return string
      */
     public function javascript(FormView $view, array $variables = array())
     {
@@ -49,12 +45,10 @@ class FormExtraHelper extends Helper
     }
 
     /**
-     * Renders a form stylesheet fragment.
+     * @param FormView $view
+     * @param array    $variables
      *
-     * @param FormView $view      The form view.
-     * @param array    $variables The extra variables
-     *
-     * @return string The rendered form stylesheet fragment.
+     * @return string
      */
     public function stylesheet(FormView $view, array $variables = array())
     {

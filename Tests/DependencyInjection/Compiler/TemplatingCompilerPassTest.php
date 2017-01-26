@@ -13,15 +13,16 @@ namespace Ivory\FormExtraBundle\Tests\DependencyInjection\Compiler;
 
 use Ivory\FormExtraBundle\DependencyInjection\Compiler\TemplatingCompilerPass;
 use Ivory\FormExtraBundle\Tests\AbstractTestCase;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Templating compiler pass test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class TemplatingCompilerPassTest extends AbstractTestCase
 {
-    /** @var \Ivory\FormExtraBundle\DependencyInjection\Compiler\TemplatingCompilerPass */
+    /**
+     * @var TemplatingCompilerPass
+     */
     private $compilerPass;
 
     /**
@@ -30,14 +31,6 @@ class TemplatingCompilerPassTest extends AbstractTestCase
     protected function setUp()
     {
         $this->compilerPass = new TemplatingCompilerPass();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->compilerPass);
     }
 
     public function testPhpTemplating()
@@ -79,9 +72,7 @@ class TemplatingCompilerPassTest extends AbstractTestCase
     }
 
     /**
-     * Creates a container builder mock.
-     *
-     * @return \Symfony\Component\DependencyInjection\ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject The container builder mock.
+     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject the container builder mock
      */
     private function createContainerBuilderMock()
     {

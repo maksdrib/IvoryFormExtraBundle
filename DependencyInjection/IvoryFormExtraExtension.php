@@ -17,8 +17,6 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
- * Ivory Form Extra extension.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class IvoryFormExtraExtension extends Extension

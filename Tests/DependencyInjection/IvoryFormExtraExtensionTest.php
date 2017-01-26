@@ -14,18 +14,21 @@ namespace Ivory\FormExtraBundle\Tests\DependencyInjection;
 use Ivory\FormExtraBundle\DependencyInjection\IvoryFormExtraExtension;
 use Ivory\FormExtraBundle\Tests\AbstractTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Form\FormRendererInterface;
 
 /**
- * Ivory Form Javascript extension test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class IvoryFormExtraExtensionTest extends AbstractTestCase
 {
-    /** @var \Symfony\Component\DependencyInjection\ContainerBuilder */
+    /**
+     * @var ContainerBuilder
+     */
     private $container;
 
-    /** @var \Symfony\Component\Form\FormRendererInterface|\PHPUnit_Framework_MockObject_MockObject */
+    /**
+     * @var FormRendererInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
     private $formRendererMock;
 
     /**
@@ -41,14 +44,6 @@ class IvoryFormExtraExtensionTest extends AbstractTestCase
 
         $this->container->registerExtension($extension = new IvoryFormExtraExtension());
         $this->container->loadFromExtension($extension->getAlias());
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->container);
     }
 
     public function testTemplatingHelper()

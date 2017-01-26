@@ -13,7 +13,9 @@ namespace Ivory\FormExtraBundle\Tests\Templating;
 
 use Ivory\FormExtraBundle\Templating\FormExtraHelper;
 use Ivory\FormExtraBundle\Tests\AbstractTestCase;
+use Symfony\Bridge\Twig\Form\TwigRenderer;
 use Symfony\Component\Form\Extension\Templating\TemplatingRendererEngine;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormRenderer;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Templating\Loader\FilesystemLoader;
@@ -21,19 +23,23 @@ use Symfony\Component\Templating\PhpEngine;
 use Symfony\Component\Templating\TemplateNameParser as TemplatingNameParser;
 
 /**
- * Ivory Form Extra helper test.
- *
  * @author GeLo <geloen.eric@gmail.com>
  */
 class FormExtraHelperTest extends AbstractTestCase
 {
-    /** @var \Symfony\Component\Templating\PhpEngine */
+    /**
+     * @var PhpEngine
+     */
     private $phpEngine;
 
-    /** @var \Symfony\Component\Form\FormFactoryInterface */
+    /**
+     * @var FormFactoryInterface
+     */
     private $formFactory;
 
-    /** @var \Symfony\Bridge\Twig\Form\TwigRenderer */
+    /**
+     * @var TwigRenderer
+     */
     private $formRenderer;
 
     /**
@@ -49,16 +55,6 @@ class FormExtraHelperTest extends AbstractTestCase
         $this->formFactory = Forms::createFormFactory();
         $this->formRenderer = new FormRenderer(new TemplatingRendererEngine($this->phpEngine, array('')));
         $this->phpEngine->addHelpers(array('ivory_form_extra' => new FormExtraHelper($this->formRenderer)));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->formRenderer);
-        unset($this->formFactory);
-        unset($this->phpEngine);
     }
 
     public function testDefaultJavascriptFragment()
@@ -160,11 +156,9 @@ class FormExtraHelperTest extends AbstractTestCase
     }
 
     /**
-     * Gets the form type according to the Symfony version.
+     * @param string $type
      *
-     * @param string $type The form type.
-     *
-     * @return string The form type.
+     * @return string
      */
     private function getFormType($type)
     {
@@ -174,11 +168,9 @@ class FormExtraHelperTest extends AbstractTestCase
     }
 
     /**
-     * Normalizes the output as there is no space control in the PHP templating component.
+     * @param string $output
      *
-     * @param string $output The output.
-     *
-     * @return string The normalized output.
+     * @return string
      */
     private function normalize($output)
     {
