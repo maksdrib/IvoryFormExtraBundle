@@ -2,6 +2,7 @@
 
 ### 1.0.1 (????-??-??)
 
+ * 3e07abf - [Travis] Always remove friendsofphp/php-cs-fixer
  * 9321263 - Add PHP-CS-Fixer support
  * 2c34dce - [Test] Fix twig deprecation for Symfony 3.0.*
  * 5a2dba3 - [Git] Add .scrutinizer.yml and .travis.yml to .gitattributes
