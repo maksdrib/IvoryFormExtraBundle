@@ -2,6 +2,8 @@
 
 ### 1.0.1 (????-??-??)
 
+ * cae79cf - [Docker] Add HHVM container
+ * 17fc7d7 - Add docker support
  * 3e07abf - [Travis] Always remove friendsofphp/php-cs-fixer
  * 9321263 - Add PHP-CS-Fixer support
  * 2c34dce - [Test] Fix twig deprecation for Symfony 3.0.*
