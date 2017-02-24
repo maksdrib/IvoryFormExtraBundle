@@ -2,6 +2,7 @@
 
 ### 2.0.0 (????-??-??)
 
+ * 2b3a624 - Bump Symfony to 2.7 + PHP to 5.6 + Add AppVeyor support
  * cae79cf - [Docker] Add HHVM container
  * 17fc7d7 - Add docker support
  * 3e07abf - [Travis] Always remove friendsofphp/php-cs-fixer
