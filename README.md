@@ -1,6 +1,7 @@
 # README
 
-[![Build Status](https://travis-ci.org/egeloen/IvoryFormExtraBundle.svg?branch=master)](http://travis-ci.org/egeloen/IvoryFormExtraBundle)
+[![Travis Build Status](https://travis-ci.org/egeloen/IvoryFormExtraBundle.svg?branch=master)](http://travis-ci.org/egeloen/IvoryFormExtraBundle)
+[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/hpp7jubq6tgxiy9r/branch/master?svg=true)](https://ci.appveyor.com/project/egeloen/ivoryformextrabundle/branch/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/egeloen/IvoryFormExtraBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/egeloen/IvoryFormExtraBundle/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/egeloen/IvoryFormExtraBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/egeloen/IvoryFormExtraBundle/?branch=master)
 [![Dependency Status](http://www.versioneye.com/php/egeloen:ckeditor-bundle/badge.svg)](http://www.versioneye.com/php/egeloen:form-extra-bundle)
