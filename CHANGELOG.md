@@ -2,6 +2,7 @@
 
 ### 2.0.0 (????-??-??)
 
+ * afa2f90 - [Travis] Fix scripts according to last changes
  * 897e8b8 - [README] Fix AppVeyor link
  * 2b3a624 - Bump Symfony to 2.7 + PHP to 5.6 + Add AppVeyor support
  * cae79cf - [Docker] Add HHVM container
