@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 2.0.0 (????-??-??)
+### 2.0.0 (2017-02-27)
 
  * f11e525 - [UPGRADE] Notify about PHP and Symfony bump
  * afa2f90 - [Travis] Fix scripts according to last changes
